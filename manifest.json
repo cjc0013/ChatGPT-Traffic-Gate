@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Chat Traffic Gate (ChatGPT) \u2014 AutoPilot v2.1 (Safe)",
+  "version": "0.7.1",
+  "description": "Stops giant history loads at the network layer, thins large JSONs, caps DOM, keeps sessions warm \u2014 with safe defaults (no reload loops).",
+  "permissions": [
+    "storage",
+    "webRequest",
+    "webRequestBlocking",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "content/early-shield.js",
+        "content/net-guard.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "content/dom-softcap.js",
+        "content/keepalive.js",
+        "content/autopilot.js",
+        "content/traffic-ui.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "chat-traffic-gate@local",
+      "strict_min_version": "109.0"
+    }
+  }
+}
