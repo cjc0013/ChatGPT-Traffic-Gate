@@ -176,7 +176,3 @@ No heavy UI. No analytics. Small code footprint.
 # 📄 License
 
 MIT License
-
----
-
-If you want a **short version**, **marketing version**, or a **technical deep-dive version**, I can generate those too.
