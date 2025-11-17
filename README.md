@@ -112,7 +112,7 @@ This prevents large DOM loads before trimming can occur.
 
 ## 🧩 **Traffic UI Pill**
 
-A small optional pill displays:
+A small pill displays:
 
 * AutoPilot indicator
 * A toggle for the history gate
